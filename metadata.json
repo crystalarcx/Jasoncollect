@@ -1,0 +1,6 @@
+{
+  "name": "Jason 的好棒章",
+  "description": "Jason 的好棒章紀錄與兌換系統",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

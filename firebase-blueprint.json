@@ -1,0 +1,34 @@
+{
+  "collections": {
+    "logs": {
+      "description": "Records of all stamp additions, subtractions, and redemptions",
+      "fields": {
+        "timestamp": "number",
+        "reason": "string",
+        "amount": "number",
+        "type": "string"
+      }
+    },
+    "quick_actions": {
+      "description": "User-defined common reasons for quick input",
+      "fields": {
+        "reason": "string",
+        "amount": "number"
+      }
+    },
+    "store_items": {
+      "description": "Items available for redemption",
+      "fields": {
+        "name": "string",
+        "imageUrl": "string",
+        "cost": "number"
+      }
+    },
+    "stats": {
+      "description": "Aggregate statistics, e.g. total stamps",
+      "fields": {
+        "totalStamps": "number"
+      }
+    }
+  }
+}
