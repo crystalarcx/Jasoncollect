@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/Jasoncollect/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
