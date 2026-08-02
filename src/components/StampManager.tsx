@@ -96,7 +96,7 @@ export function StampManager({ onAddLog, quickActions, onAddQuickAction, onDelet
               type="text"
               value={quickReason}
               onChange={(e) => setQuickReason(e.target.value)}
-              placeholder="事由 (例如：9:30前睡覺)"
+              placeholder="事由 (必填，例如：9:30前睡覺)"
               className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"
               required
             />
@@ -228,13 +228,13 @@ export function StampManager({ onAddLog, quickActions, onAddQuickAction, onDelet
 
         <div className="space-y-6">
           <div>
-            <label htmlFor="reason" className="block text-sm font-medium text-gray-700 mb-2">事由</label>
+            <label htmlFor="reason" className="block text-sm font-medium text-gray-700 mb-2">事由 <span className="text-red-500">*必填</span></label>
             <input
               id="reason"
               type="text"
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              placeholder="請輸入原因..."
+              placeholder="請輸入事由 (必填)..."
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-colors"
             />
           </div>
