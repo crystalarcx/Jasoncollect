@@ -133,7 +133,10 @@ export function StampManager({ onAddLog, quickActions, onAddQuickAction, onDelet
           <div>
             <h3 className="text-sm font-semibold text-gray-500 mb-3">獎勵區 (加分)</h3>
             <div className="flex flex-wrap gap-2">
-              {quickActions.filter(qa => qa.type === 'reward').map(qa => (
+              {quickActions
+                .filter(qa => qa.type === 'reward')
+                .sort((a, b) => a.amount - b.amount)
+                .map(qa => (
                 <button
                   key={qa.id}
                   onClick={() => handleQuickAction(qa)}
@@ -163,7 +166,10 @@ export function StampManager({ onAddLog, quickActions, onAddQuickAction, onDelet
           <div>
             <h3 className="text-sm font-semibold text-gray-500 mb-3">懲罰區 (扣分)</h3>
             <div className="flex flex-wrap gap-2">
-              {quickActions.filter(qa => qa.type === 'punish').map(qa => (
+              {quickActions
+                .filter(qa => qa.type === 'punish')
+                .sort((a, b) => a.amount - b.amount)
+                .map(qa => (
                 <button
                   key={qa.id}
                   onClick={() => handleQuickAction(qa)}
