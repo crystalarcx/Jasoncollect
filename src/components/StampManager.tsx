@@ -128,34 +128,66 @@ export function StampManager({ onAddLog, quickActions, onAddQuickAction, onDelet
           </form>
         )}
 
-        <div className="flex flex-wrap gap-2">
-          {quickActions.map(qa => (
-            <button
-              key={qa.id}
-              onClick={() => handleQuickAction(qa)}
-              onPointerDown={() => handlePointerDown(qa)}
-              onPointerUp={clearTimer}
-              onPointerLeave={clearTimer}
-              onPointerCancel={clearTimer}
-              onContextMenu={(e) => {
-                e.preventDefault();
-                return false;
-              }}
-              disabled={isSubmitting}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-colors disabled:opacity-50 select-none touch-none ${
-                qa.type === 'reward' 
-                  ? 'bg-red-50 text-red-700 border-red-100 hover:bg-red-100 hover:border-red-200' 
-                  : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200 hover:border-gray-300'
-              }`}
-            >
-              {qa.type === 'reward' ? <PlusCircle className="w-4 h-4" /> : <MinusCircle className="w-4 h-4" />}
-              {qa.reason}
-              <span className="font-bold">{qa.type === 'reward' ? '+' : '-'}{qa.amount}</span>
-            </button>
-          ))}
-          {quickActions.length === 0 && !showAddQuick && (
-            <p className="text-gray-500 text-sm">目前沒有常用事由，點擊右上角新增。</p>
-          )}
+        <div className="space-y-6">
+          {/* Reward Section */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-500 mb-3">獎勵區 (加分)</h3>
+            <div className="flex flex-wrap gap-2">
+              {quickActions.filter(qa => qa.type === 'reward').map(qa => (
+                <button
+                  key={qa.id}
+                  onClick={() => handleQuickAction(qa)}
+                  onPointerDown={() => handlePointerDown(qa)}
+                  onPointerUp={clearTimer}
+                  onPointerLeave={clearTimer}
+                  onPointerCancel={clearTimer}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    return false;
+                  }}
+                  disabled={isSubmitting}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-colors disabled:opacity-50 select-none touch-none bg-red-50 text-red-700 border-red-100 hover:bg-red-100 hover:border-red-200"
+                >
+                  <PlusCircle className="w-4 h-4" />
+                  {qa.reason}
+                  <span className="font-bold">+{qa.amount}</span>
+                </button>
+              ))}
+              {quickActions.filter(qa => qa.type === 'reward').length === 0 && !showAddQuick && (
+                <p className="text-gray-400 text-sm">目前沒有常用獎勵。</p>
+              )}
+            </div>
+          </div>
+
+          {/* Punish Section */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-500 mb-3">懲罰區 (扣分)</h3>
+            <div className="flex flex-wrap gap-2">
+              {quickActions.filter(qa => qa.type === 'punish').map(qa => (
+                <button
+                  key={qa.id}
+                  onClick={() => handleQuickAction(qa)}
+                  onPointerDown={() => handlePointerDown(qa)}
+                  onPointerUp={clearTimer}
+                  onPointerLeave={clearTimer}
+                  onPointerCancel={clearTimer}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    return false;
+                  }}
+                  disabled={isSubmitting}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-colors disabled:opacity-50 select-none touch-none bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200 hover:border-gray-300"
+                >
+                  <MinusCircle className="w-4 h-4" />
+                  {qa.reason}
+                  <span className="font-bold">-{qa.amount}</span>
+                </button>
+              ))}
+              {quickActions.filter(qa => qa.type === 'punish').length === 0 && !showAddQuick && (
+                <p className="text-gray-400 text-sm">目前沒有常用處罰。</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
