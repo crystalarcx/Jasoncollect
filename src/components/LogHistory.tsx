@@ -65,7 +65,7 @@ export function LogHistory({ logs, isAdmin, onDeleteLog, onResetLogs }: LogHisto
                 {isAdmin && onDeleteLog && (
                   <button
                     onClick={() => onDeleteLog(log)}
-                    className="p-2 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+                    className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 active:bg-red-100 rounded-full transition-colors"
                     title="刪除紀錄"
                   >
                     <Trash2 className="w-5 h-5" />
